@@ -1,0 +1,30 @@
+<h2>Tickets</h2>
+
+@if (tickets().length === 0) {
+  <p>Aucun ticket pour le moment.</p>
+} @else {
+  <table>
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>Titre</th>
+      <th>Statut</th>
+      <th>Priorité</th>
+      <th>Créé le</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+      @for (t of tickets(); track t.id) {
+        <tr>
+          <td>{{ t.id }}</td>
+          <td>{{ t.titre }}</td>
+          <td>{{ t.statut }}</td>
+          <td>{{ t.priorite }}</td>
+          <td>{{ t.dateCreation | date: 'dd/MM/yyyy HH:mm' }}</td>
+          <td><button (click)="remove(t.id!)">Supprimer</button></td>
+        </tr>
+      }
+    </tbody>
+  </table>
+}
