@@ -1,0 +1,30 @@
+<h2>Nouveau ticket</h2>
+
+<form (ngSubmit)="save()">
+  <div>
+    <label for="titre">Titre</label><br>
+    <input id="titre" name="titre" [(ngModel)]="ticket.titre" required>
+  </div>
+
+  <div>
+    <label for="description">Description</label><br>
+    <textarea id="description" name="description" rows="4" [(ngModel)]="ticket.description"></textarea>
+  </div>
+
+  <div>
+    <label for="priorite">Priorité</label><br>
+    <select id="priorite" name="priorite" [(ngModel)]="ticket.priorite">
+      <option value="BASSE">Basse</option>
+      <option value="MOYENNE">Moyenne</option>
+      <option value="HAUTE">Haute</option>
+      <option value="URGENTE">Urgente</option>
+    </select>
+  </div>
+
+  @if (error) {
+    <p class="error">{{ error }}</p>
+  }
+
+  <button type="submit">Créer</button>
+  <a routerLink="/tickets">Annuler</a>
+</form>
